@@ -1,22 +1,4 @@
 <?php
-// ===================================================================
-// 1. データベース接続設定
-// ===================================================================
-$host = "localhost";
-$user = "your_db_user";     // データベースユーザー名
-$pass = "your_db_password"; // データベースパスワード
-$dbname = "your_database_name"; // データベース名
-
-try {
-    $pdo = new PDO(
-        "mysql:host={$host};dbname={$dbname};charset=utf8mb4",
-        $user,
-        $pass
-    );
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("DB接続失敗: " . $e->getMessage());
-}
 
 // ===================================================================
 // 2. POST送信（登録処理）
@@ -95,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
     } else {
-        $message = "⚠️ スポット名、市町村、ジャンルは必須です。";
+        $message = "スポット名、市町村、ジャンルは必須です。";
     }
 }
 
