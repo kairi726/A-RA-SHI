@@ -14,6 +14,6 @@ SELECT
 FROM
     photos
 WHERE
-    spot_id = [表示したいスポットのID];
+    spot_id = [表示したいスポットのID]; -- スポットIDでフィルタリング
 
 
