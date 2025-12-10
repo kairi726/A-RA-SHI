@@ -1,42 +1,9 @@
-<?php
-// =======================================================
-// ========== PHP: スプレッドシート連携を想定したデータ構造 ==========
-// =======================================================
-
-// 【後でスプシから取得したデータに置き換える部分】
-// スプレッドシートの各行が、この配列の要素（店舗データ）に対応すると想定します。
-$dataFromSpreadsheet = [
-    'name' => "喫茶店 木漏れ日", 
-    'content' => "季節のフルーツを使った自家製パイが自慢です。\n静かな空間でゆっくりお過ごしください。", 
-    'atmosphere' => "【お店の雰囲気】\n静かで落ち着いた雰囲気", 
-    'price' => "【価格帯】\nランチ：1,500円〜", 
-    'image_path' => "images/komorebi.jpg",
-    // カードクリック時の遷移先URL
-    'link_url' => "https://example.com/komorebi" 
-];
-
-// データの割り当て
-$storeName = $dataFromSpreadsheet['name'];
-$storeContent = $dataFromSpreadsheet['content'];
-$storeAtmosphere = $dataFromSpreadsheet['atmosphere']; 
-$storePrice = $dataFromSpreadsheet['price'];         
-$imagePath = $dataFromSpreadsheet['image_path'];
-$linkURL = $dataFromSpreadsheet['link_url']; // 遷移先URLを変数に格納
-
-// 画像ファイルが存在しない場合の処理
-if (!file_exists($imagePath)) {
-    $imagePath = ""; 
-}
-
-// =======================================================
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($storeName); ?> - 店舗紹介カード</title>
+    <title>喫茶店 木漏れ日 - 店舗紹介カード</title>
     
     <style>
         /* 装飾の色定義 */
@@ -95,7 +62,6 @@ if (!file_exists($imagePath)) {
             margin: 0 20px;
             padding: 20px;
             position: relative;
-            /* 戻るボタンのスペースを確保するため、下部のパディングを増やす */
             padding-bottom: 55px; 
             background-repeat: no-repeat;
             background-position: 
@@ -189,23 +155,22 @@ if (!file_exists($imagePath)) {
         
         /* 戻るボタンのスタイル (カード内に配置) */
         .back-button {
-            /* カードの右下に絶対配置 */
             position: absolute; 
-            bottom: 15px; /* 下からの距離 */
-            right: 15px; /* 右からの距離 */
+            bottom: 15px; 
+            right: 15px; 
             padding: 5px 10px;
-            background-color: var(--green-color); /* 緑の帯の色に合わせる */
-            color: #fffbe9; /* 白っぽい文字色 */
+            background-color: var(--green-color); 
+            color: #fffbe9; 
             border: none;
             border-radius: 3px;
             cursor: pointer;
             font-size: 14px;
-            z-index: 20; /* 他の要素の上に表示 */
+            z-index: 20; 
             transition: background-color 0.3s;
         }
 
         .back-button:hover {
-            background-color: #2b4b39; /* 少し濃い緑 */
+            background-color: #2b4b39; 
         }
 
     </style>
@@ -213,7 +178,7 @@ if (!file_exists($imagePath)) {
 <body>
     <div class="card-container" id="storeCard">
         <div class="header-band">
-            <h1 id="store-name"><?php echo htmlspecialchars($storeName); ?></h1>
+            <h1 id="store-name">喫茶店 木漏れ日</h1>
         </div>
 
         <div class="info-card">
@@ -221,20 +186,16 @@ if (!file_exists($imagePath)) {
             <div class="card-border">
                 
                 <div class="photo-area">
-                    <?php if (!empty($imagePath)): ?>
-                        <img src="<?php echo htmlspecialchars($imagePath); ?>" alt="<?php echo htmlspecialchars($storeName); ?>の写真">
-                    <?php else: ?>
-                        <p>写真</p>
-                    <?php endif; ?>
-                </div>
+                    <img src="images/komorebi.jpg" alt="喫茶店 木漏れ日の写真">
+                    </div>
 
                 <div class="content-area">
-                    <p id="store-content"><?php echo nl2br(htmlspecialchars($storeContent)); ?></p>
+                    <p id="store-content">季節のフルーツを使った自家製パイが自慢です。<br>静かな空間でゆっくりお過ごしください。</p>
                 </div>
 
                 <div class="extra-details">
-                    <p><strong><?php echo nl2br(htmlspecialchars($storeAtmosphere)); ?></strong></p>
-                    <p><strong><?php echo nl2br(htmlspecialchars($storePrice)); ?></strong></p>
+                    <p><strong>【お店の雰囲気】<br>静かで落ち着いた雰囲気</strong></p>
+                    <p><strong>【価格帯】<br>ランチ：1,500円〜</strong></p>
                 </div>
                 
                 <button class="back-button" onclick="history.back()">
@@ -248,7 +209,8 @@ if (!file_exists($imagePath)) {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cardContainer = document.getElementById('storeCard');
-            const linkURL = "<?php echo $linkURL; ?>"; 
+            // 【PHP変数を直接書き込み】
+            const linkURL = "https://example.com/komorebi"; 
             
             // クリック機能 (任意のURLへ遷移)
             cardContainer.addEventListener('click', (event) => {
@@ -259,8 +221,6 @@ if (!file_exists($imagePath)) {
                 
                 if (linkURL && linkURL !== 'https://example.com/komorebi') { 
                     window.location.href = linkURL;
-                } else {
-                    // デバッグ用: alert('店舗のウェブサイトURLが設定されていません。');
                 }
             });
 
