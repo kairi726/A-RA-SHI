@@ -30,9 +30,11 @@
                     <div class="select-wrapper">
                         <select name="area">
                             <option value="">エリアを選択</option>
-                            <option value="tokyo">東京</option>
-                            <option value="osaka">大阪</option>
-                            <option value="fukuoka">福岡</option>
+                            <option value="kyoto">京都市</option>
+                            <option value="uji">宇治市</option>
+                            <option value="kizugawa">木津川市</option>
+                            <option value="yosano">与謝野市</option>
+                            <option value="kameoka">亀岡市</option>
                         </select>
                     </div>
                 </div>
@@ -42,7 +44,14 @@
                     <input type="hidden" name="genre" id="genreInput">
                     
                     <div class="button-group" id="genreGroup">
-                        <div class="pill-btn" onclick="selectBtn('genre', 'a', this)">あ</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'cafe', this)">カフェ</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'washoku', this)">和食</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'yoshoku', this)">洋食</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'izakaya', this)">居酒屋</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'chuka', this)">中華</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'ramen', this)">ラーメン</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'italian', this)">イタリアン</div>
+                        <div class="pill-btn" onclick="selectBtn('genre', 'pan', this)">パン</div>
                     </div>
                 </div>
 
@@ -51,7 +60,16 @@
                     <input type="hidden" name="atmosphere" id="atmosphereInput">
                     
                     <div class="button-group" id="atmosphereGroup">
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'a', this)">あ</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'cool', this)">クール</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'cute', this)">キュート</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'retro', this)">レトロ</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'wafuu', this)">和風</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'youfuu', this)">洋風</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'gorgeous', this)">ゴージャス</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'fancy', this)">ファンシー</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'simple', this)">シンプル</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'kakurega', this)">隠れ家</div>
+                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'wafuu', this)">和モダン</div>
                     </div>
                 </div>
 
