@@ -2,11 +2,11 @@
 
 /* --- 変数設定 --- */
 :root {
-    --bg-green: #3F634F;       /* 背景の深緑 */
-    --card-cream: #FEFDF5;     /* カードのクリーム色 */
-    --accent-gold: #D4AF37;    /* 装飾のゴールド */
-    --btn-active: #D6AE64;     /* ボタン選択時の色 */
-    --text-brown: #4A3B32;     /* 文字と線の茶色 */
+    --bg-green: #38614B;       /* 背景の深緑 */
+    --card-cream: #FFFBE9;     /* カードのクリーム色 */
+    --accent-gold: #E7B258;    /* 装飾のゴールド */
+    --btn-active: #E7B258;     /* ボタン選択時の色 */
+    --text-brown: #5D4129;     /* 文字と線の茶色 */
     --border-radius-card: 40px;
     --border-radius-btn: 50px;
 }
