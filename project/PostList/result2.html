@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Maru+Gothic:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>店舗リスト</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+        }
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 393px;
+            height: 852px;
+            background-color: #fffbe9;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 0;
+        }
+
+        @media (max-width: 393px) {
+            .header {
+                width: 100%;
+                border-radius: 0;
+                top: 0;
+                padding: 40px 0 44px 0;
+            }
+        }
+
+        .header {
+            width: 100%;
+            background: #395c4f;
+            padding: 50px 0 10px 0;
+            text-align: center;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .search-box {
+            width: 92%;
+            margin: 0 auto;
+            background: #f4f0db;
+            padding: 20px 16px;
+            border-radius: 20px;
+            font-size: 16px;
+            line-height: 1.3;
+            box-sizing: border-box;
+            text-align: center;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-weight: 400;
+        }
+
+        .fancy-frame {
+            border: 2px solid #d4b483;
+            border-radius: 10px;
+            padding: 12px 15px;
+            position: relative;
+            margin: 15px auto;
+            background: #fff9f0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            width: 75%;
+            font-family: 'Shippori Mincho', serif;
+            font-weight: 400;
+        }
+
+        .fancy-frame::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid #e7b258;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .fancy-frame div {
+            text-align: right;
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.3;
+            font-family: 'Shippori Mincho', serif;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+        .fancy-frame::after {
+            content: '✤';
+            position: absolute;
+            bottom: -12px;
+            right: 10px;
+            font-size: 12px;
+            color: #d4b483;
+        }
+
+
+        .fancy-frame div:last-child {
+            font-weight: 500;
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+        .container > .elegant-frame:first-child {
+            margin-top: 30px; /* 最初の四角の上の余白 */
+            margin-bottom: 40px; /* 最初の四角の下の余白 */
+        }
+
+/* 最後の四角の下の余白を調整したい場合 */
+        .container > .elegant-frame:last-child {
+            margin-bottom: 40px; /* 最後の四角の下の余白 */
+        }
+
+        .card {
+            width: 92%;
+            background: #faf7ea;
+            margin: 18px auto;
+            padding: 16px;
+            border: 2px solid #c6a462;
+            border-radius: 12px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+         .fancy-frame:hover {
+            transform: translateY(-2px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .search-box {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.05em;
+        }
+
+        /* スクロールバーのカスタマイズ */
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: #f4f0db;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: #d4b483;
+            border-radius: 4px;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #c6a462;
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .info {
+             font-family: 'Zen Maru Gothic', sans-serif;
+             font-weight: 400;
+             letter-spacing: 0.02em;
+             font-size: 14px; /* infoクラスのサイズも14pxに統一 */
+             line-height: 1.5;
+        }
+        .info strong {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-weight: 500;
+            color: #333;
+            margin-right: 4px;
+            font-size: 14px; 
+            
+        }
+
+
+        .elegant-frame {
+            margin: 20px auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="container">
+        <div class="header">
+            <div class="search-box">検索結果🔍</div>
+        </div>
+
+        <div class="elegant-frame">
+            <div class="fancy-frame">
+                <div>店名</div>
+                <div>営業時間</div>
+                <div>相場価格</div>
+                <div>雰囲気</div>
+            </div>
+        </div>
+        
+        <div class="elegant-frame">
+            <div class="fancy-frame">
+                <div>店名</div>
+                <div>営業時間</div>
+                <div>相場価格</div>
+                <div>雰囲気</div>
+
+            </div>
+        </div>
+
+        <div class="elegant-frame">
+            <div class="fancy-frame">
+                <div>店名</div>
+                <div>営業時間</div>
+                <div>相場価格</div>
+                <div>雰囲気</div>
+            </div>
+        </div>
+
+        <div class="elegant-frame">
+            <div class="fancy-frame">
+                <div>店名</div>
+                <div>営業時間</div>
+                <div>相場価格</div>
+                <div>雰囲気</div>
+            </div>
+        </div>
+         <div class="elegant-frame">
+            <div class="fancy-frame">
+                <div>店名</div>
+                <div>営業時間</div>
+                <div>相場価格</div>
+                <div>雰囲気</div>
+            </div>
+        </div>
+
+        
+        <div id="shop-list"></div>
+    </div>
+</div>
+
+<script>
+const API_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+
+fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+        const list = document.getElementById("shop-list");
+
+        data.forEach(shop => {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <img src="${shop.img}" alt="写真">
+                <div class="info">
+                    <div><strong>店名：</strong>${shop.name}</div>
+                    <div><strong>営業時間：</strong>${shop.time}</div>
+                    <div><strong>相場価格：</strong>${shop.price}</div>
+                    <div><strong>雰囲気：</strong>${shop.mood}</div>
+                </div>
+            `;
+
+            list.appendChild(card);
+        });
+    })
+    .catch(error => console.error("データ取得エラー:", error));
+</script>
+
+</body>
+</html>
