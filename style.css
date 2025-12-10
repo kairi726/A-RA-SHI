@@ -21,16 +21,15 @@ body {
     background-color: var(--bg-green);
     font-family: 'Shippori Mincho', serif;
     color: var(--text-brown);
-    display: flex;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 20px;
 }
 
 .container {
     width: 100%;
     max-width: 400px;
     text-align: center;
-    margin: auto;
+    margin: 0 auto;
 }
 
 /* タイトル部分 */
