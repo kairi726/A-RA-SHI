@@ -35,14 +35,14 @@
                     <input type="hidden" name="genre" id="genreInput">
                     
                     <div class="button-group" id="genreGroup">
-                        <div class="pill-btn" onclick="selectBtn('genre', 'cafe', this)">カフェ</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'washoku', this)">和食</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'yoshoku', this)">洋食</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'izakaya', this)">居酒屋</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'chuka', this)">中華</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'ramen', this)">ラーメン</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'italian', this)">イタリアン</div>
-                        <div class="pill-btn" onclick="selectBtn('genre', 'pan', this)">パン</div>
+                        <div class="pill-btn" odata-value="cafe" onclick="toggleBtn('genre', this)">カフェ</div>
+                        <div class="pill-btn" data-value="washoku" onclick="toggleBtn('genre', this)">和食</div>
+                        <div class="pill-btn" data-value="yoshoku" onclick="toggleBtn('genre', this)">洋食</div>
+                        <div class="pill-btn" data-value="izakaya" onclick="toggleBtn('genre', this)">居酒屋</div>
+                        <div class="pill-btn" data-value="chuka" onclick="toggleBtn('genre', this)">中華</div>
+                        <div class="pill-btn" data-value="ramen" onclick="toggleBtn('genre', this)">ラーメン</div>
+                        <div class="pill-btn" data-value="italian" onclick="toggleBtn('genre', this)">イタリアン</div>
+                        <div class="pill-btn" data-value="pan" onclick="toggleBtn('genre', this)">パン</div>
                     </div>
                 </div>
 
@@ -51,16 +51,16 @@
                     <input type="hidden" name="atmosphere" id="atmosphereInput">
                     
                     <div class="button-group" id="atmosphereGroup">
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'cool', this)">クール</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'cute', this)">キュート</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'retro', this)">レトロ</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'wafuu', this)">和風</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'youfuu', this)">洋風</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'gorgeous', this)">ゴージャス</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'fancy', this)">ファンシー</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'simple', this)">シンプル</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'kakurega', this)">隠れ家</div>
-                        <div class="pill-btn" onclick="selectBtn('atmosphere', 'wafuu', this)">和モダン</div>
+                        <div class="pill-btn" data-value="cool" onclick="toggleBtn('atmosphere', this)">クール</div>
+                        <div class="pill-btn" data-value="cute" onclick="toggleBtn('atmosphere', this)">キュート</div>
+                        <div class="pill-btn" data-value="retro" onclick="toggleBtn('atmosphere', this)">レトロ</div>
+                        <div class="pill-btn" data-value="wafuu" onclick="toggleBtn('atmosphere', this)">和風</div>
+                        <div class="pill-btn" data-value="youfuu" onclick="toggleBtn('atmosphere', this)">洋風</div>
+                        <div class="pill-btn" data-value="gorgeous" onclick="toggleBtn('atmosphere', this)">ゴージャス</div>
+                        <div class="pill-btn" data-value="fancy" onclick="toggleBtn('atmosphere', this)">ファンシー</div>
+                        <div class="pill-btn" data-value="simple" onclick="toggleBtn('atmosphere', this)">シンプル</div>
+                        <div class="pill-btn" data-value="kakurega" onclick="toggleBtn('atmosphere', this)">隠れ家</div>
+                        <div class="pill-btn" data-value="wafuu" onclick="toggleBtn('atmosphere', this)">和モダン</div>
                     </div>
                 </div>
 
