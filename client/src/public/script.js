@@ -1,63 +1,45 @@
-/**
- * ボタン選択処理
- * @param {string} type - 'genre' または 'atmosphere'
- * @param {string} value - 送信する値
- * @param {HTMLElement} element - クリックされた要素
- */
-function selectBtn(type, value, element) {
-    // 1. 対象グループのIDを取得
-    const groupId = type + 'Group';
-    const inputId = type + 'Input';
-    
-    // 2. そのグループ内のすべてのボタンから 'active' クラスを外す
-    const group = document.getElementById(groupId);
-    if (group) {
-        const buttons = group.getElementsByClassName('pill-btn');
-        for (let btn of buttons) {
-            btn.classList.remove('active');
-        }
-    }
+// client/src/public/script.js
 
-    // 3. クリックされたボタンに 'active' クラスをつける
-    element.classList.add('active');
+// ボタンのON/OFFと hidden input 更新
+function toggleBtn(type, el) {
+  el.classList.toggle("active");
 
-    // 4. 隠しinputに値をセットする
-    const inputField = document.getElementById(inputId);
-    if (inputField) {
-        inputField.value = value;
-    }
-    
-    // 確認用ログ（不要なら削除可）
-    console.log(type + " selected: " + value);
+  const groupId = type === "genre" ? "genreGroup" : "atmosphereGroup";
+  const hiddenId = type === "genre" ? "genreInput" : "atmosphereInput";
+
+  const group = document.getElementById(groupId);
+  const hidden = document.getElementById(hiddenId);
+
+  // active になっているボタンの data-value を全部集める
+  const selected = Array.from(group.querySelectorAll(".pill-btn.active"))
+    .map((btn) => btn.dataset.value);
+
+  // 「和モダン」だけ backend のキーに合わせて変換
+  const normalized = selected.map((v) =>
+    v === "wamodern" ? "wafuu_modern" : v
+  );
+
+  // カンマ区切りで hidden に入れる（例: "cafe,pan"）
+  hidden.value = normalized.join(",");
 }
 
-/**
- * 複数選択用ボタン処理
- * @param {string} targetName - 'genre' または 'atmosphere'
- * @param {HTMLElement} element - クリックされた要素
- */
-function toggleBtn(targetName, element) {
-    // 1. クリックされたボタンの active クラスを「付け外し」する
-    element.classList.toggle('active');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("search-form");
 
-    // 2. そのグループの中で、現在 active になっているボタンを全部探す
-    const group = document.getElementById(targetName + 'Group');
-    const activeButtons = group.querySelectorAll('.pill-btn.active');
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // ページ内送信を止める
 
-    // 3. activeなボタンから data-value の値を集める
-    const selectedValues = [];
-    activeButtons.forEach(function(btn) {
-        selectedValues.push(btn.getAttribute('data-value'));
-    });
+    const area = document.getElementById("areaSelect").value;
+    const genre = document.getElementById("genreInput").value;
+    const atmosphere = document.getElementById("atmosphereInput").value;
 
-    // 4. 集めた値をカンマ区切りにして input に入れる
-    // 例: "cafe,ramen,italian" のような文字列が入ります
-    const inputId = targetName + 'Input';
-    const inputField = document.getElementById(inputId);
-    
-    if (inputField) {
-        inputField.value = selectedValues.join(',');
-    }
+    // URLパラメータを組み立てる
+    const params = new URLSearchParams();
+    if (area) params.set("area", area);
+    if (genre) params.set("genre", genre);
+    if (atmosphere) params.set("atmosphere", atmosphere);
 
-    console.log(targetName + " selected: " + inputField.value);
-}
+    // result.html に遷移して、result.js 側で表示をやる
+    window.location.href = `result.html?${params.toString()}`;
+  });
+});

@@ -6,7 +6,6 @@
     <title>Eat Out Search</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -14,12 +13,13 @@
     <h1 class="main-title">Eat Out Search</h1>
 
     <div class="search-card">
-        <div class="card-inner-frame"> <form action="result.php" method="get">
-                
+        <div class="card-inner-frame">
+            <!-- action / method はなくてもOK（JSで処理するから） -->
+            <form id="search-form">
                 <div class="form-group">
                     <label>エリア</label>
                     <div class="select-wrapper">
-                        <select name="area">
+                        <select name="area" id="areaSelect">
                             <option value="">エリアを選択</option>
                             <option value="kyoto">京都市</option>
                             <option value="uji">宇治市</option>
@@ -35,7 +35,7 @@
                     <input type="hidden" name="genre" id="genreInput">
                     
                     <div class="button-group" id="genreGroup">
-                        <div class="pill-btn" odata-value="cafe" onclick="toggleBtn('genre', this)">カフェ</div>
+                        <div class="pill-btn" data-value="cafe" onclick="toggleBtn('genre', this)">カフェ</div>
                         <div class="pill-btn" data-value="washoku" onclick="toggleBtn('genre', this)">和食</div>
                         <div class="pill-btn" data-value="yoshoku" onclick="toggleBtn('genre', this)">洋食</div>
                         <div class="pill-btn" data-value="izakaya" onclick="toggleBtn('genre', this)">居酒屋</div>
@@ -60,7 +60,7 @@
                         <div class="pill-btn" data-value="fancy" onclick="toggleBtn('atmosphere', this)">ファンシー</div>
                         <div class="pill-btn" data-value="simple" onclick="toggleBtn('atmosphere', this)">シンプル</div>
                         <div class="pill-btn" data-value="kakurega" onclick="toggleBtn('atmosphere', this)">隠れ家</div>
-                        <div class="pill-btn" data-value="wafuu" onclick="toggleBtn('atmosphere', this)">和モダン</div>
+                        <div class="pill-btn" data-value="wamodern" onclick="toggleBtn('atmosphere', this)">和モダン</div>
                     </div>
                 </div>
 
@@ -69,6 +69,9 @@
             </form>
         </div>
     </div>
+
+    <!-- 🔽 検索結果を表示するエリア -->
+    <div id="result" class="result-list"></div>
 </div>
 
 <script src="script.js"></script>
