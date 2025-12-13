@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店舗リスト</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Maru+Gothic:wght@300;400;500&display=swap" rel="stylesheet">
-    <title>店舗リスト</title>
-
+    <script src="result.js" defer></script>
     <style>
         html, body {
             margin: 0;
@@ -111,6 +111,7 @@
             font-weight: 400;
             letter-spacing: 0.03em;
         }
+
         .fancy-frame::after {
             content: '✤';
             position: absolute;
@@ -120,21 +121,20 @@
             color: #d4b483;
         }
 
-
         .fancy-frame div:last-child {
             font-weight: 500;
             color: #333;
             font-size: 16px;
             margin-bottom: 0;
         }
+
         .container > .elegant-frame:first-child {
-            margin-top: 30px; /* 最初の四角の上の余白 */
-            margin-bottom: 40px; /* 最初の四角の下の余白 */
+            margin-top: 30px;
+            margin-bottom: 40px;
         }
 
-/* 最後の四角の下の余白を調整したい場合 */
         .container > .elegant-frame:last-child {
-            margin-bottom: 40px; /* 最後の四角の下の余白 */
+            margin-bottom: 40px;
         }
 
         .card {
@@ -148,7 +148,8 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             font-family: 'Zen Maru Gothic', sans-serif;
         }
-         .fancy-frame:hover {
+
+        .fancy-frame:hover {
             transform: translateY(-2px);
             transition: transform 0.3s ease;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
@@ -160,7 +161,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* スクロールバーのカスタマイズ */
         .container::-webkit-scrollbar {
             width: 8px;
         }
@@ -178,35 +178,25 @@
             background: #c6a462;
         }
 
-        .card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 12px;
+        .info {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
-        .info {
-             font-family: 'Zen Maru Gothic', sans-serif;
-             font-weight: 400;
-             letter-spacing: 0.02em;
-             font-size: 14px; /* infoクラスのサイズも14pxに統一 */
-             line-height: 1.5;
-        }
         .info strong {
             font-family: 'M PLUS Rounded 1c', sans-serif;
             font-weight: 500;
             color: #333;
             margin-right: 4px;
-            font-size: 14px; 
-            
+            font-size: 14px;
         }
-
 
         .elegant-frame {
             margin: 20px auto;
         }
-        
     </style>
 </head>
 <body>
@@ -217,27 +207,9 @@
             <div class="search-box">検索結果🔍</div>
         </div>
 
+        <!-- 見出し用フレーム（固定） -->
         <div class="elegant-frame">
-            <div class="fancy-frame">
-                <div>店名</div>
-                <div>営業時間</div>
-                <div>相場価格</div>
-                <div>雰囲気</div>
-            </div>
-        </div>
-        
-        <div class="elegant-frame">
-            <div class="fancy-frame">
-                <div>店名</div>
-                <div>営業時間</div>
-                <div>相場価格</div>
-                <div>雰囲気</div>
-
-            </div>
-        </div>
-
-        <div class="elegant-frame">
-            <div class="fancy-frame">
+            <div class="fancy-frame" style="cursor: default;">
                 <div>店名</div>
                 <div>営業時間</div>
                 <div>相場価格</div>
@@ -245,37 +217,10 @@
             </div>
         </div>
 
-        <div class="elegant-frame">
-            <div class="fancy-frame">
-                <div>店名</div>
-                <div>営業時間</div>
-                <div>相場価格</div>
-                <div>雰囲気</div>
-            </div>
-        </div>
-         <div class="elegant-frame">
-            <div class="fancy-frame">
-                <div>店名</div>
-                <div>営業時間</div>
-                <div>相場価格</div>
-                <div>雰囲気</div>
-            </div>
-        </div>
-
-        
+        <!-- ここに JS で店舗カードを追加する -->
         <div id="shop-list"></div>
     </div>
 </div>
-
-<script>
-    // fancy-frame をクリックしたら next.html に移動
-    document.querySelectorAll(".fancy-frame").forEach(frame => {
-        frame.addEventListener("click", function () {
-            location.href = "next.html";  // ← 移動先のページ
-        });
-    });
-</script>
-
 
 </body>
 </html>
